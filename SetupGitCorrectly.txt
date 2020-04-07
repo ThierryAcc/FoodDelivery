@@ -1,0 +1,2 @@
+create the project in the git folder
+not the eclipse workspace folder
