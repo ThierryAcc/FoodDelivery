@@ -10,11 +10,14 @@ public class Order {
 	}
 
 	public void next() throws InterruptedException {
-		System.out.println("State: " + this.state.ORDERED + " " + this.getFood().getName());
-		Thread.sleep((long) (1000+Math.random()*3000));
-		System.out.println("State: " + this.state.DELIVERY + " " + this.getFood().getName());
-		Thread.sleep((long) (1000+Math.random()*3000));
-		System.out.println("State: " + this.state.COMPLETED + " " + this.getFood().getName());
+		this.state = OrderState.ORDERED;
+		System.out.println("State: " + this.state + " " + this.getFood().getName());
+		Thread.sleep(OrderState.DELIVERY.getTime());
+		this.state = OrderState.DELIVERY;
+		System.out.println("State: " + this.state + " " + this.getFood().getName());
+		Thread.sleep(OrderState.COMPLETED.getTime());
+		this.state = OrderState.COMPLETED;
+		System.out.println("State: " + this.state + " " + this.getFood().getName());
 	}
 
 	@Override
